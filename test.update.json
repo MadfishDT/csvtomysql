@@ -1,0 +1,10 @@
+{
+    "host": "localhost",
+    "user": "dev",
+    "password": "puser",
+    "database": "puser",
+    "csv": "./public_channel_statistics_update.csv",
+    "table": "public_channel_statistics",
+    "mode": "update",
+    "keys": ["id"]
+}
