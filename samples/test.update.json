@@ -1,10 +1,10 @@
 {
     "host": "localhost",
-    "user": "dev",
+    "user": "puser",
     "password": "puser",
-    "database": "puser",
-    "csv": "./public_channel_statistics_update.csv",
-    "table": "public_channel_statistics",
+    "database": "test",
+    "csv": "./samples/sample_update.csv",
+    "table": "users",
     "mode": "update",
-    "keys": ["id"]
+    "keys": ["id","age"]
 }

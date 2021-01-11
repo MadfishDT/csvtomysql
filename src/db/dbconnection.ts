@@ -39,15 +39,10 @@ export class DBConnection {
 
         let updateQueruTemplate = "";
         const keys = Object.keys(csvRows[0]);
-
-
-        console.log("keyvalues", keys);
         const mapStrings = keys.map( ()=> '?');
         const formattedKeys = keys.map( item => `\`${item}\``);
         updateQueruTemplate = `INSERT INTO ${table}(${formattedKeys.join(',')}) VALUES(${mapStrings});`;
-       
-        console.log(updateQueruTemplate);
-
+ 
         let sqlm = "";
         csvRows.forEach( row => {
             const values = keys.map((value) => row[value] ? row[value] : null);
@@ -84,11 +79,9 @@ export class DBConnection {
 
         let updateQueruTemplate = "";
         const keys = Object.keys(csvRows[0]);
-
         const keyValues = keys.filter((item) => {
             return keyColumns.findIndex((kitem) => item == kitem) == -1;
         });
-        console.log("keyvalues", keyValues);
         updateQueruTemplate = `UPDATE ${table} SET `;
         keyValues.forEach((item, index) => {
             if (index == 0) {
@@ -106,8 +99,6 @@ export class DBConnection {
             }
         });
         updateQueruTemplate += ";";
-
-        console.log(updateQueruTemplate);
 
         let sqlm = "";
         csvRows.forEach( row => {

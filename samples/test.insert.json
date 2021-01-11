@@ -2,9 +2,8 @@
     "host": "localhost",
     "user": "puser",
     "password": "puser",
-    "database": "new_table",
-    "csv": "./public_channel_statistics_insert.csv",
-    "table": "public_channel_statistics",
-    "mode": "insert",
-    "keys": ["id"]
+    "database": "test",
+    "csv": "./samples/sample_insert.csv",
+    "table": "users",
+    "mode": "insert"
 }

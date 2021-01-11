@@ -4,8 +4,6 @@ import { DBConnection } from "./db/dbconnection";
 import * as fs from "fs";
 import * as csv from "csv-parser";
 import { printCommands } from './print.proc';
-import * as figlet from 'figlet';
-
 class App {
     private configFileInfo: iConfigFileInfo;
     private csvInfo: iCSVFileInfo | null;
@@ -17,8 +15,6 @@ class App {
         this.csvInfo = {};
     }
     
-
-
     private async loadConfig() {
         const configFilePath = process.argv.slice(2)[0];
 
@@ -45,7 +41,6 @@ class App {
                     database: configs.database,
                 });
                 console.log("Config file Info");
-                console.log(buffer);
                 const result = await this.dbConnection.tryConnection();
                 if (!result) {
                     return false;
@@ -127,26 +122,24 @@ class App {
     }
 
     public showTitle(): void {
-        console.log(figlet.textSync('CSV TO MYSQL', {
-            font: '3D-ASCII',
-            horizontalLayout: 'default',
-            verticalLayout: 'default',
-            width: 150,
-            whitespaceBreak: false}))
+        console.log('CSV TO MYSQL');
     }
 
     public async start(): Promise<void> {
         printCommands("Start config Loading");
-        this.startQueryLoader();
-            const result = await this.loadConfig();
-        this.endQueryLoader();
+        const result = await this.loadConfig();
+        
         if (result) {
             const csvRows = await this.analyzeCSV();
             if(csvRows && this.configFileInfo.mode === 'update') {
+                this.startQueryLoader();
                 await this.dbConnection.updates(this.configFileInfo.table, this.configFileInfo.keys, csvRows);
+                this.endQueryLoader();
             }
             if(csvRows && this.configFileInfo.mode === 'insert') {
+                this.startQueryLoader();
                 await this.dbConnection.inserts(this.configFileInfo.table, csvRows);
+                this.endQueryLoader();
             }
             
         }
