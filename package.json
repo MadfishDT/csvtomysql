@@ -1,6 +1,6 @@
 {
-  "name": "csvtomysql",
-  "version": "0.0.2",
+  "name": "csvintomysql",
+  "version": "0.0.3",
   "description": "csv file update and insert into mysql",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/MadfishDT/csvtomysql.git"
   },
-  "keywords": [],
+  "keywords": ["csv", "update", "insert", "mysql", "adapter", "tool"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
